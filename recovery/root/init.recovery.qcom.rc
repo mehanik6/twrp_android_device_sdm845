@@ -34,6 +34,18 @@ on fs
     chown system system /dev/ion
     install_keyring
 
+on init
+    start hwservicemanager
+    #start prepdecrypt
+    setprop crypto.ready 1
+
+service prepdecrypt /sbin/prepdecrypt.sh
+    oneshot
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
 service sbinqseecomd /sbin/qseecomd
     user root
@@ -41,24 +53,11 @@ service sbinqseecomd /sbin/qseecomd
     disabled
     seclabel u:r:recovery:s0
 
-service prepdecrypt /sbin/prepdecrypt.sh
-    oneshot
-    disabled
-    user root
-    group root
-    seclabel u:r:recovery:s0
-
 service hwservicemanager /sbin/hwservicemanager
     user root
     group root
     disabled
     onrestart setprop hwservicemanager.ready false
-    seclabel u:r:recovery:s0
-
-service boot-1-0 /sbin/android.hardware.boot@1.0-service
-    user root
-    group root
-    disabled
     seclabel u:r:recovery:s0
 
 service servicemanager /sbin/servicemanager
@@ -95,14 +94,10 @@ service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
 
 on boot
     setprop sys.usb.config adb
-    write /proc/touchpanel/gesture_enable 1
-    write /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
 
 on init
     start hwservicemanager
-    start boot-1-0
-    start prepdecrypt
-    #setprop crypto.ready 1
+    setprop crypto.ready 1
 
 on property:crypto.ready=0
     stop sbinqseecomd
