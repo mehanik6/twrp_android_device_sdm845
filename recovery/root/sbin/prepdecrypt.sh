@@ -22,8 +22,8 @@ relink()
 }
 
 # the dev path can be different so we need to identify it
-syspathsoc="/dev/block/platform/soc/1.d84000.ufshc/by-name/system"
-syspathnosoc="/dev/block/platform/1.d84000.ufshc/by-name/system"
+syspathsoc="/dev/block/platform/soc/1d84000.ufshc/by-name/system"
+syspathnosoc="/dev/block/platform/1d84000.ufshc/by-name/system"
 syspath=undefined
 while [ ! -e "$syspath" ];do
     [ -e "$syspathnosoc" ] && syspath="$syspathnosoc"
@@ -60,34 +60,54 @@ cp /s/bin/hwservicemanager /sbin/ >> $LOG 2>&1
 cp /s/lib64/libandroid_runtime.so /sbin/ >> $LOG 2>&1 
 cp /s/lib64/libhidltransport.so /sbin/ >> $LOG 2>&1 
 cp /s/lib64/libhidlbase.so /sbin/ >> $LOG 2>&1 
+cp /s/lib64/android.hidl.base@1.0.so /sbin/ >> $LOG 2>&1 
+cp /s/lib64/libicuuc.so /sbin/ >> $LOG 2>&1
+cp /s/lib64/libxml2.so /sbin/ >> $LOG 2>&1
 
 # copy the decrypt stuff
-cp /s/vendor/lib64/libdiag.so /sbin/ >> $LOG 2>&1 
+cp #/s/vendor/lib64/libdiag.so /sbin/ >> $LOG 2>&1 
 cp /s/vendor/lib64/libdrmfs.so /sbin/ >> $LOG 2>&1 
 cp /s/vendor/lib64/libdrmtime.so /sbin/ >> $LOG 2>&1 
-cp /s/vendor/lib64/libQSEEComAPI.so /sbin/ >> $LOG 2>&1 
+cp #/s/vendor/lib64/libQSEEComAPI.so /sbin/ >> $LOG 2>&1 
 cp /s/vendor/lib64/librpmb.so /sbin/ >> $LOG 2>&1 
 cp /s/vendor/lib64/libssd.so /sbin/ >> $LOG 2>&1 
 cp /s/vendor/lib64/libtime_genoff.so /sbin/ >> $LOG 2>&1 
-#cp /s/vendor/manifest.xml /vendor/ >> $LOG 2>&1 
-#cp /s/vendor/compatibility_matrix.xml /vendor/ >> $LOG 2>&1 
+cp /s/vendor/manifest.xml >> $LOG 2>&1 
+cp /s/vendor/compatibility_matrix.xml >> $LOG 2>&1 
 cp /s/vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so /sbin/android.hardware.keymaster@3.0-impl-qti.so >> $LOG 2>&1 
 cp /s/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so /sbin/android.hardware.gatekeeper@1.0-impl-qti.so >> $LOG 2>&1 
 
-cp /s/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so /vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so >> $LOG 2>&1 
-cp /s/vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so /vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libmdtp.so /vendor/lib64/libmdtp.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libqmi_common_so.so /vendor/lib64/libqmi_common_so.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libsmemlog.so /vendor/lib64/libsmemlog.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libqmiservices.so /vendor/lib64/libqmiservices.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libqmi_encdec.so /vendor/lib64/libqmi_encdec.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libqmi_client_qmux.so /vendor/lib64/libqmi_client_qmux.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libqmi_cci.so /vendor/lib64/libqmi_cci.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libmdmdetect.so /vendor/lib64/libmdmdetect.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libidl.so /vendor/lib64/libidl.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libdsutils.so /vendor/lib64/libdsutils.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libdiag.so /vendor/lib64/libdiag.so >> $LOG 2>&1 
-cp /s/vendor/lib64/libQSEEComAPI.so /vendor/lib64/libQSEEComAPI.so >> $LOG 2>&1 
+cp /s/vendor/lib64/hw/android.hidl.base@1.0.so /sbin/android.hidl.base@1.0.so >> $LOG 2>&1 
+#cp /s/vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so /vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so >> $LOG 2>&1 
+#cp /s/vendor/lib64/libmdtp.so /vendor/lib64/libmdtp.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libqmi_common_so.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libsmemlog.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libqmiservices.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libqmi_encdec.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libqmi_client_qmux.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libqmi_cci.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libmdmdetect.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libidl.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libdsutils.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libdiag.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libQSEEComAPI.so >> $LOG 2>&1 
+cp /s/vendor/lib64/libGPreqcancel.so >> $LOG 2>&1
+cp /s/vendor/lib64/libGPreqcancel_svc.so >> $LOG 2>&1
+cp /s/vendor/lib64/libqdutils.so >> $LOG 2>&1
+cp /s/vendor/lib64/libqisl.so >> $LOG 2>&1
+cp /s/vendor/lib64/libqservice.so >> $LOG 2>&1
+cp /s/vendor/lib64/librecovery_updater_msm.so >> $LOG 2>&1
+cp /s/vendor/lib64/libsecureui.so >> $LOG 2>&1
+cp /s/vendor/lib64/libSecureUILib.so >> $LOG 2>&1
+cp /s/vendor/lib64/libsecureui_svcsock.so >> $LOG 2>&1
+cp /s/vendor/lib64/libspcom.so >> $LOG 2>&1
+cp /s/vendor/lib64/libspl.so >> $LOG 2>&1
+cp /s/vendor/lib64/libStDrvInt.so >> $LOG 2>&1
+cp /s/vendor/lib64/libkeymasterdeviceutils.so >> $LOG 2>&1
+cp /s/vendor/lib64/libkeymasterprovision.so >> $LOG 2>&1
+cp /s/vendor/lib64/libkeymasterutils.so >> $LOG 2>&1
+cp /s/vendor/lib64/vendor.qti.hardware.tui_comm@1.0_vendor.so >> $LOG 2>&1
+
 
 F_LOG "preparing libraries finished"
 

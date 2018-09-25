@@ -6,7 +6,7 @@
 /system_image    emmc      /dev/block/bootdevice/by-name/system
 /vendor          ext4      /dev/block/bootdevice/by-name/vendor                        flags=backup=1;display="Vendor";flashimg=1
 /vendor_image    emmc      /dev/block/bootdevice/by-name/vendor
-/data            ext4      /dev/block/bootdevice/by-name/userdata                      flags=encryptable=footer;length=-16384
+/data            ext4      /dev/block/bootdevice/by-name/userdata                      flags=encryptable=/dev/block/platform/soc/1d84000.ufshc/by-name/encrypt
 /firmware        vfat      /dev/block/bootdevice/by-name/modem                         flags=display="Firmware";mounttodecrypt
 /cust            ext4      /dev/block/bootdevice/by-name/cust                          flags=display="Cust"
 /misc            emmc      /dev/block/bootdevice/by-name/misc
